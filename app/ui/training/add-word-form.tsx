@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from 'yup';
+import { createWord } from "@/src/db/mutations";
+import { toast } from "sonner";
 
 interface AddWordFormProps {
   handleToggle: () => void;
@@ -70,7 +72,16 @@ const AddWordForm: React.FC<AddWordFormProps> = ({ handleToggle }) => {
         <Formik
           initialValues={initialValues}
           validationSchema={newWordSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={async ({translation, word, usageExample}) => {
+            toast.promise(
+              createWord(word, translation, usageExample ?? ""),
+              {
+                loading: "Creating word",
+                success: data => `Word ${data.word} created!`,
+                error: err => `Error: ${err.message}`
+              }
+            )
+          }}
         >
           {({ errors, touched }) => (
             <Form>
