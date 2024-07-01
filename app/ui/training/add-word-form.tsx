@@ -3,6 +3,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import { createWord } from "@/src/db/mutations";
 import { toast } from "sonner";
+import XIcon from "../icons/x-icon";
 
 interface AddWordFormProps {
   handleToggle: () => void;
@@ -57,16 +58,16 @@ const AddWordForm: React.FC<AddWordFormProps> = ({ handleToggle }) => {
   );
 
   return (
-    <div className="absolute inset-0 bg-slate-800 bg-opacity-50 flex items-center justify-center">
+    <div className="absolute inset-0 bg-white flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-1/2">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold text-center">Add a New Word</h1>
           <button
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-1.5 px-3 rounded focus:outline-none focus:shadow-outline"
+            className="bg-pink hover:bg-red-700 text-white font-bold p-2 rounded focus:outline-none focus:shadow-outline"
             type="button"
             onClick={handleToggle}
           >
-            X
+            <XIcon />
           </button>
         </div>
         <Formik
@@ -91,18 +92,11 @@ const AddWordForm: React.FC<AddWordFormProps> = ({ handleToggle }) => {
 
               <div className="flex items-center justify-between">
                 <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="bg-light-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
                 >
                   Add Word
                 </button>
-                {/* <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
-                  onClick={handleToggle}
-                >
-                  Cancel
-                </button> */}
               </div>
             </Form>
           )}

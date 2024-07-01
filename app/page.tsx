@@ -8,8 +8,8 @@ export default function Page() {
         Self Tutor helps you organize your learning material and creates a customized training schedule to ensure you achieve your learning goals
       </h2>
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-        <Link  href="/" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Get Started</Link>
-        <Link  href="/learn-more" className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Learn More</Link>
+        <Link  href="/training" className="px-4 py-2 bg-blue text-white rounded">Get Started</Link>
+        <Link  href="/learn-more" className="px-4 py-2 bg-green text-white rounded">Learn More</Link>
       </div>
     </div>
   );

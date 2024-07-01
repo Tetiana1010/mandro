@@ -2,13 +2,15 @@
 
 import React, { useState } from "react";
 import AddWordForm from "../ui/training/add-word-form";
+import DictionaryCards from './dictionary-cards';
 import { Word } from "@/src/db/schema";
+import PlusIcon from "../ui/icons/plus-icon";
 
 interface MyWordsProps {
   words: Word[]
 }
 
-const MyWords: React.FC<MyWordsProps> = ({words}) => {
+const MyWords: React.FC<MyWordsProps> = ({ words }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const toggleForm = () => setIsFormOpen(!isFormOpen);
@@ -19,20 +21,15 @@ const MyWords: React.FC<MyWordsProps> = ({words}) => {
         <div className="flex justify-between items-center">
           <h1 className="text-4xl font-bold mb-4">Dictionary</h1>
           <div>
-            {/* <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600">
-              My words
-            </button> */}
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+              className="bg-green text-white p-2 rounded"
               onClick={toggleForm}
             >
-              +
+              <PlusIcon />
             </button>
           </div>
-          <ul>
-            {words.map(({word}) => <li key={word}>{word}</li>)}
-          </ul>
         </div>
+        <DictionaryCards words={words} />
         {isFormOpen && <AddWordForm handleToggle={toggleForm} />}
       </div>
     </div>
